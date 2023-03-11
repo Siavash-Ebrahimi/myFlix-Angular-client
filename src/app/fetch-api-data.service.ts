@@ -1,12 +1,18 @@
-import { Injectable } from '@angular/core';
-import { catchError } from 'rxjs/operators';
-import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-// RxJS (rxjs) is a library which allows all events to be asynchronous in Angular.
-import { Observable, throwError, map } from 'rxjs';
-// import { map } from 'rxjs/operators';
+// import { Injectable } from '@angular/core';
+// import { catchError } from 'rxjs/operators';
+// import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+// // RxJS (rxjs) is a library which allows all events to be asynchronous in Angular.
+// import { Observable, throwError, map } from 'rxjs';
+// // import { map } from 'rxjs/operators';
+
+import { Injectable } from "@angular/core";
+import { catchError } from "rxjs/operators";
+import { HttpClient, HttpHeaders, HttpErrorResponse, } from "@angular/common/http";
+import { Observable, throwError } from "rxjs";
+import { map } from "rxjs/operators";
 
 //Declaring the api url that will provide data for the client app
-const apiUrl = 'YOUR_HOSTED_API_URL_HERE/';
+const apiUrl = 'https://myflix-2022.herokuapp.com/';
 
 /* `@Injectable` is a decorator, it is a function that augments a piece of code—usually another 
    function or a class. In this case, you’re using the decorator to tell Angular 
@@ -14,7 +20,7 @@ const apiUrl = 'YOUR_HOSTED_API_URL_HERE/';
 @Injectable({
   providedIn: 'root'
 })
-export class UserRegistrationService {
+export class FetchApiDataService {
   // Inject the HttpClient module to the constructor params
   // This will provide HttpClient to the entire class, making it available via this.http
   constructor(private http: HttpClient) {
@@ -44,8 +50,9 @@ export class UserRegistrationService {
           Authorization: 'Bearer ' + token,
         }),
       })
-      .pipe(map(this.extractResponseData),
-        catchError(this.handleError));
+      // .pipe(map(this.extractResponseData),
+      //   catchError(this.handleError));
+      .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
   getMovie(title: string): Observable<any> {
@@ -157,14 +164,15 @@ export class UserRegistrationService {
 
   private handleError(error: HttpErrorResponse): any {
     if (error.error instanceof ErrorEvent) {
-      console.error('Some error occurred:', error.error.message);
+      console.error("Some error occurred:", error.error.message);
     } else {
       console.error(
-        `Error Status code ${error.status}, ` + `Error body is: ${error.error}`
+        `Error Status code ${error.status},` + `Error body is: ${error.error}`
       );
     }
-    return throwError('Something bad happened; please try again later.');
+    return throwError("Something happened; please try again later");
   }
+
 
   // Non-typed response extraction
   private extractResponseData(res: Response): any {
