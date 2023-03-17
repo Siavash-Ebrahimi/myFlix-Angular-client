@@ -30,11 +30,11 @@ export class UserLoginFormComponent {
    * open snackBar to show error message
    */
   loginUser(): void {
-    this.fetchApiData.userLogin(this.loginData).subscribe((response) => {
+    this.fetchApiData.userLogin(this.loginData).subscribe((result) => {
       //Success response
       //console.log('loginUser', response);
-      localStorage.setItem('username', response.user.Username);
-      localStorage.setItem('token', response.token);
+      localStorage.setItem('user', result.user.Username);
+      localStorage.setItem('token', result.token);
 
       this.dialogRef.close(); // Close dialog on success
       //console.log('loginUser() response1:', response);
@@ -42,10 +42,10 @@ export class UserLoginFormComponent {
         duration: 2000
       });
       this.router.navigate(['movies']);
-    }, (response) => {
+    }, (result) => {
       //Error response
-      console.log('loginUser()failedRes:', response);
-      this.snackBar.open(response.message, 'OK', {
+      console.log('loginUser()failedRes:', result);
+      this.snackBar.open(result.message, 'There is no User!', {
         duration: 4000
       });
     });

@@ -1,0 +1,80 @@
+// $bgColor: #af0624;
+// $text: #fff;
+// $boxColor: #000;
+// $secondColor: #8d4c4c;
+
+// .welcome-page {
+//   height: 100vh;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   padding: 30px 40px;
+//   background-color: $bgColor;
+//   box-sizing: border-box;
+//   border-style: solid;
+//   border-color: $boxColor;
+//   border-width: 5px;
+// }
+
+// .welcome-card {
+//   max-width: 400px;
+//   margin: auto;
+//   padding: 25px;
+//   background-color: $secondColor;
+//   border-style: solid;
+//   border-color: $boxColor;
+//   border-width: 5px;
+// }
+
+// .welcome-header {
+//   display: flex;
+//   justify-content: center;
+//   color: $text;
+// }
+
+// .register {
+//   background-color: $boxColor;
+// }
+
+// $backgroundColor: #000;
+$backgroundColor: rgb(56, 56, 56);
+$cardColor: #1e1e1e;
+$textColor: #fff;
+$boxShadowColor: #1e1e1e;
+
+* {
+  box-sizing: border-box;
+}
+
+.welcome-page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 40px;
+  background-color: $backgroundColor;
+}
+
+.welcome-card {
+  max-width: 300px;
+  margin: auto;
+  padding: 30px;
+  flex-direction: column;
+  box-shadow: 0 25px 30px $boxShadowColor;
+  background-color: $cardColor;
+  justify-content: space-evenly;
+}
+
+.welcome-card-header {
+  margin-bottom: 20px;
+  color: $textColor;
+  display: flex;
+  justify-content: center;
+}
+
+.mat-card>.mat-card-actions:last-child {
+  margin-left: 0;
+  padding-bottom: 0;
+  display: flex;
+  justify-content: space-evenly;
+}
