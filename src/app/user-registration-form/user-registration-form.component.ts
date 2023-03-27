@@ -30,14 +30,14 @@ export class UserRegistrationFormComponent implements OnInit {
 
   // This is the function responsible for sending the form inputs to the backend
   registerUser(): void {
-    this.fetchApiData.userRegistration(this.userData).subscribe((result) => {
+    this.fetchApiData.userRegistration(this.userData).subscribe((result: any) => {
       // Logic for a successful user registration goes here! (To be implemented)
       this.dialogRef.close(); // This will close the modal on success!
       this.snackBar.open(result, 'OK', {
         duration: 2000
       });
-    }, (result) => {
-      this.snackBar.open(result, 'OK', {
+    }, (result: any) => {
+      this.snackBar.open(result, 'Registration Feild, Pelase check inputs', {
         duration: 2000
       });
     });
